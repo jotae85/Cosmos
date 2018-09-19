@@ -1,5 +1,7 @@
 import UIKit
 
+import Cosmos
+
 /**
  
  This is a sample file that can be used in your ObjC project if you want to change Cosmos View settings.
