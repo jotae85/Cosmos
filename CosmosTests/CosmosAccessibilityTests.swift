@@ -1,6 +1,8 @@
 import XCTest
 @testable import Cosmos
 
+private let kFloatingPointAccuracy: Double = 0.01
+
 class CosmosAccessibilityTests: XCTestCase {
   var view: UIView!
   var settings: CosmosSettings!
@@ -97,92 +99,92 @@ class CosmosAccessibilityTests: XCTestCase {
     // ---
 
     result = CosmosAccessibility.accessibilityIncrement(4.1, settings: settings)
-    XCTAssertEqual("0.9", "\(result)")
+    XCTAssertEqual(0.9, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(4, settings: settings)
-    XCTAssertEqual("1.0", "\(result)")
+    XCTAssertEqual(1.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(5, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(5.1, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     settings.totalStars = 6
     result = CosmosAccessibility.accessibilityIncrement(5.1, settings: settings)
-    XCTAssertEqual("0.9", "\(result)")
+    XCTAssertEqual(0.9, result, accuracy: kFloatingPointAccuracy)
   }
   
   func testIncrement_half() {
     settings.fillMode = .half
     
     var result = CosmosAccessibility.accessibilityIncrement(4.2, settings: settings)
-    XCTAssertEqual("0.3", "\(result)")
+    XCTAssertEqual(0.3, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(4.5, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(2, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(4.8, settings: settings)
-    XCTAssertEqual("0.2", "\(result)")
+    XCTAssertEqual(0.2, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(5, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(5.7, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
   }
 
   func testIncrement_precise() {
     settings.fillMode = .precise
 
     var result = CosmosAccessibility.accessibilityIncrement(4.2, settings: settings)
-    XCTAssertEqual("0.3", "\(result)")
+    XCTAssertEqual(0.3, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(4.5, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(2, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(4.8, settings: settings)
-    XCTAssertEqual("0.2", "\(result)")
+    XCTAssertEqual(0.2, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(5, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityIncrement(5.7, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
   }
   
   // MARK: - Decrement
@@ -192,32 +194,32 @@ class CosmosAccessibilityTests: XCTestCase {
     settings.minTouchRating = 1
     
     var result = CosmosAccessibility.accessibilityDecrement(4.7, settings: settings)
-    XCTAssertEqual("0.7", "\(result)")
+    XCTAssertEqual(0.7, result, accuracy: kFloatingPointAccuracy)
     
     // ---
 
     result = CosmosAccessibility.accessibilityDecrement(4.2, settings: settings)
-    XCTAssertEqual("0.2", "\(result)")
+    XCTAssertEqual(0.2, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(5, settings: settings)
-    XCTAssertEqual("1.0", "\(result)")
+    XCTAssertEqual(1.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(1, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(0, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(-1,settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
   }
   
   func testDecrement_half() {
@@ -225,38 +227,38 @@ class CosmosAccessibilityTests: XCTestCase {
     settings.minTouchRating = 1
     
     var result = CosmosAccessibility.accessibilityDecrement(4.2, settings: settings)
-    XCTAssertEqual("0.2", "\(result)")
+    XCTAssertEqual(0.2, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(4.8, settings: settings)
-    XCTAssertEqual("0.3", "\(result)")
+    XCTAssertEqual(0.3, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(5, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(1.5, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(1.0, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     settings.minTouchRating = 0
     result = CosmosAccessibility.accessibilityDecrement(1.0, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(0.0, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
   }
   
   func testDecrement_precise() {
@@ -264,38 +266,38 @@ class CosmosAccessibilityTests: XCTestCase {
     settings.minTouchRating = 1
     
     var result = CosmosAccessibility.accessibilityDecrement(4.2, settings: settings)
-    XCTAssertEqual("0.2", "\(result)")
+    XCTAssertEqual(0.2, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(4.8, settings: settings)
-    XCTAssertEqual("0.3", "\(result)")
+    XCTAssertEqual(0.3, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(5, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(1.5, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(1.0, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     settings.minTouchRating = 0
     result = CosmosAccessibility.accessibilityDecrement(1.0, settings: settings)
-    XCTAssertEqual("0.5", "\(result)")
+    XCTAssertEqual(0.5, result, accuracy: kFloatingPointAccuracy)
     
     // ---
     
     result = CosmosAccessibility.accessibilityDecrement(0.0, settings: settings)
-    XCTAssertEqual("0.0", "\(result)")
+    XCTAssertEqual(0.0, result, accuracy: kFloatingPointAccuracy)
   }
 }
   
